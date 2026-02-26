@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import CORS_ORIGINS
-from app.routers import upload, query
+from app.routers import upload, query, delete
 from app.services import vector_service
 
 app = FastAPI(
@@ -18,6 +18,7 @@ app.add_middleware(
 
 app.include_router(upload.router)
 app.include_router(query.router)
+app.include_router(delete.router)
 
 
 @app.get("/documents", tags=["documents"])

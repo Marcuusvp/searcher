@@ -42,3 +42,8 @@ def get_all_documents() -> list[dict]:
         if item["filename"] not in [d["filename"] for d in docs]:
             docs.append(item)
     return docs
+
+
+def delete_document(filename: str) -> int:
+    response = supabase.table(TABLE_NAME).delete().eq("filename", filename).execute()
+    return len(response.data) if response.data else 0
