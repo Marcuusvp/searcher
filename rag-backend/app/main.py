@@ -3,6 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import CORS_ORIGINS
 from app.routers import upload, query, delete
 from app.services import vector_service
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(
     title="RAG Backend", description="Backend RAG para consulta de documentos internos"
